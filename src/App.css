@@ -1,0 +1,360 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "poppins", sans-serif;
+}
+:root {
+    --primary-color: #c6c3c3;
+    --second-color: #ffffff;
+    --black-color: #000000;
+}
+
+
+
+.wrapper {
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* background-color: rgba(0, 0, 0, 0.2); */
+    background-image: url("/Lbg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+.login-box {
+    position: relative;
+    width: 450px;
+    backdrop-filter: blur(25px);
+    border: 2px solid var(--primary-color);
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    padding: 7.5em 2.5em 4em 2.5em;
+    color: var(--second-color);
+}
+.login-header {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-color);
+    width: 140px;
+    height: 70px;
+    border-radius: 0 0 20px 20px;
+}
+.login-header span {
+    font-size: 30px;
+    color: #ffffff;
+}
+.login-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -30px;
+    width: 30px;
+    height: 30px;
+    border-top-right-radius: 50%;
+    background: transparent;
+    box-shadow: 15px 0 0 0 var(--primary-color);
+}
+.login-header::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -30px;
+    width: 30px;
+    height: 30px;
+    border-top-left-radius: 50%;
+    background: transparent;
+    box-shadow: -15px 0 0 0 var(--primary-color);
+}
+.input-box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+}
+.input-field {
+    width: 100%;
+    height: 40px;
+    font-size: 16px;
+    background: transparent;
+    color: var(--second-color);
+    padding-inline: 20px 50px;
+    border: 2px solid var(--primary-color);
+    border-radius: 30px;
+    outline: none;
+}
+#mb {
+    margin-bottom: 10px;
+}
+.label {
+    position: absolute;
+    top: -28px;
+    left: 20px;
+    transition: 0.2s;
+}
+.input-field:focus~.label,
+.input-field:valid .label {
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    font-size: 14px;
+    background-color: var(--primary-color);
+    border-radius: 30px;
+    color: var(--black-color);
+    padding: 0 10px;
+}
+.icon {
+    position: absolute;
+    top: 18px;
+    right: 25px;
+    font-size: 20px;
+}
+.remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+}
+.input-submit {
+    width: 100%;
+    height: 50px;
+    background: #c6c3c3;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.input-submit:hover {
+    background: rgba(165, 165, 165, 0.1);
+}
+.register {
+    text-align: center;
+}
+.register a {
+    font-weight: 500;
+}
+@media only screen and (max-width: 564px) {
+    .wrapper {
+        padding: 20px;
+    }
+    .login_box {
+        padding: 7.5em 1.5em 4em 1.5em;
+    }
+}
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.icon.blinking {
+    animation: blink 1s infinite;
+}
+
+.text-green{
+    color: #0da100;
+}
+
+
+
+
+
+
+    /* -- YouTube Link Styles -- */
+
+    #source-link {
+        top: 60px;
+      }
+  
+      #source-link>i {
+        color: rgb(94, 106, 210);
+      }
+  
+      #yt-link {
+        top: 10px;
+      }
+  
+      #yt-link>i {
+        color: rgb(219, 31, 106);
+  
+      }
+  
+
+/* RoomCard.css */
+.fade-ef {
+    opacity: 0;
+    animation: fadeIn 0.9s ease-in-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .banner-container {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+
+.banner-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Adjust the alpha value to control darkness */
+}
+
+text-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white; /* Text color */
+  font-size: 24px; /* Adjust the font size as needed */
+  font-weight: bold; /* Adjust font weight as needed */
+}
+
+.bnrs1 {
+    position: relative;
+    background-image: url("/cashboy.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    width: 350px;
+    height: 300px;
+    overflow: hidden;
+}
+
+.bnrs1::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    z-index: 1;
+}
+
+.bnrs1 h2 {
+    position: relative;
+    z-index: 2;
+    color: #ffffff;
+    margin-top: 1em;
+    margin-left: 1em;
+}
+
+.bnrs2 {
+    position: relative;
+    background-image: url("/GiftCardd.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    width: 350px;
+    height: 300px;
+    overflow: hidden;
+}
+
+.bnrs2::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    z-index: 1;
+}
+
+.bnrs2 h2 {
+    position: relative;
+    z-index: 2;
+    color: #ffffff;
+    margin-top: 1em;
+    margin-left: 1em;
+}
+
+.bnrs3 {
+    position: relative;
+    background-image: url("/greenimg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    width: 350px;
+    height: 300px;
+    overflow: hidden;
+}
+
+.bnrs3::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    z-index: 1;
+}
+
+.bnrs3 h2 {
+    position: relative;
+    z-index: 2;
+    color: #ffffff;
+    margin-top: 1em;
+    margin-left: 1em;
+}
+
+
+
+
+
+
+/* Additional styling for the text if necessary */
+
+
+
+  
+
+
+
+
+
+
+

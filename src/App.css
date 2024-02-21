@@ -252,8 +252,8 @@ text-container {
     background-size: cover;
     background-position: center;
     border-radius: 10px;
-    width: 350px;
-    height: 300px;
+    width: 600px;
+    height: 600px;
     overflow: hidden;
 }
 

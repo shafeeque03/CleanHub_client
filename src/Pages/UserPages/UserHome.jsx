@@ -7,102 +7,120 @@ import { toast } from "react-toastify";
 import Spinner from "../../components/Spinner";
 
 const UserHome = () => {
-  const [point, setPoint] = useState(null)
-  const [load, setLoad] = useState(true)
-  const [pCount, setPcount] = useState(null)
-  const {user} = useSelector((state) => state.userReducer)
-  const userId = user._id
-  const[butonValue, setButtonValue] = useState("Call Mr.Cleaner")
-  useEffect(()=>{
+  const [point, setPoint] = useState(null);
+  const [load, setLoad] = useState(true);
+  const [pCount, setPcount] = useState(null);
+  const { user } = useSelector((state) => state.userReducer);
+  const userId = user._id;
+  const [theme, setTheme] = useState("bg-gray-900");
+  const [buttonValue, setButtonValue] = useState("Call Mr.Cleaner");
+
+  useEffect(() => {
     getMyPoints(userId)
-    .then((res)=>{
-      setPoint(res?.data?.point)
-      setPcount(res?.data?.pickCount)
-      setLoad(false)
-    }).catch((err)=>{
-      console.log(err.message)
-    })
-  },[])
-  console.log(point,"jiii")
-  const handleRequest = async()=>{
-try {
-  const res = await requestPickup(userId)
-  if(res.status==200){
-    setButtonValue("requested")
-    toast.success(res?.data?.message)
-  }
-} catch (error) {
-  console.log(error.message)
-  toast.error(error.response?.data?.message)
-}
-  }
+      .then((res) => {
+        setPoint(res?.data?.point);
+        setPcount(res?.data?.pickCount);
+        setLoad(false);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }, []);
+
+  const handleRequest = async () => {
+    try {
+      const res = await requestPickup(userId);
+      if (res.status === 200) {
+        setButtonValue("requested");
+        toast.success(res?.data?.message);
+      }
+    } catch (error) {
+      console.log(error.message);
+      toast.error(error.response?.data?.message);
+    }
+  };
+
+  const handleThemeToggle = () => {
+    setTheme((prevTheme) =>
+      prevTheme === "bg-white" ? "bg-gray-900" : "bg-white"
+    );
+  };
+
+
   return (
     <div>
-      {user && load==false? (
-      <>
       <UserNav />
+      {user && load === false ? (
+      <div
+        className="leading-normal min-h-screen bg-gray-50 w-full p-5 tracking-normal text-indigo-400"
+      >
+        <div class="h-full">
+          <div class="w-full container mx-auto">
+            <div class="w-full flex items-center justify-between">
+              <a
+                class="flex items-center text-black no-underline hover:no-underline mt-2 font-bold text-2xl lg:text-4xl"
+                href="#"
+              >
+                 <p className=" text-black opacity-75">Welcome</p>
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 via-yellow-500 to-orange-500 ps-2">
+                  {user.name}
+                </span>
+              </a>
+            </div>
+          </div>
 
-<div className="bg-yellow-500 h-auto w-full flex flex-wrap p-3 md:flex-wrap justify-evenly items-center">
-  <div className="md:w-1/5 h-auto py-3 px-1 bg-gradient-to-r from-yellow-300 to-yellow-400 rounded-xl w-4/5 m-2">
-    <h1 className="text-2xl text-slate-50 ms-3 mt-3">🪙Total Points</h1>
-    <p className="text-2xl text-slate-50 font-bold text-start ms-5 mt-2">
-      {load==false &&(<>{point.point}</>)}
-    </p>
-  </div>
-  <div className="md:w-1/5 h-auto py-3 px-1 bg-gradient-to-r from-yellow-300 to-yellow-400 rounded-xl w-4/5 m-2">
-    <h1 className="text-2xl text-slate-50 ms-3 mt-3">🚚Total Pickups</h1>
-    <p className="text-2xl text-slate-50 font-bold text-start ms-5 mt-2">
-    {load==false &&(<>{pCount}</>)}
-    </p>
-  </div>
-  <div className="md:w-1/5 h-auto py-3 px-1 bg-gradient-to-r from-yellow-300 to-yellow-400 rounded-xl w-4/5 m-2">
-    <h1 className="text-2xl text-slate-50 ms-3 mt-3"> 🪙Todays Points</h1>
-    <p className="text-2xl text-slate-50 font-bold text-start ms-5 mt-2">
-      24
-    </p>
-  </div>
-</div>
+          <div class="container  mx-auto flex flex-wrap flex-col md:flex-row items-center">
+            <div class="flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden">
+              <h1 class="my-4 text-3xl md:text-5xl text-black font-bold opacity-75 leading-tight text-center md:text-left">
+                Redeem
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 via-yellow-500 to-orange-500 ms-2 me-2">
+                  Points
+                </span>
+                to earn Money!
+              </h1>
+              <p class="leading-normal text-base md:text-2xl mb-8 text-center md:text-left">
+              CleanHub has been meticulously crafted to enhance your satisfaction
+              </p>
 
-<div className="w-full h-auto bg-slate-50 flex flex-wrap p-3 text-white md:flex-wrap justify-evenly gap-2 items-center fade-ef">
-  <div class="bnrs1 hover:-translate-y-1 hover:scale-90 duration-500">
-    <h2 class="mt-3 ms-3 text-xl mt-1 font-bold  me-2">
-      Redeem points into cash and enjoy
-    </h2>
-  </div>
-  <div class="bnrs2 hover:-translate-y-1 hover:scale-90 duration-500">
-    <h2 class="mt-3 ms-3 text-xl mt-1 font-bold  me-2">
-      Redeem points into Gift Cards
-    </h2>
-  </div>
-  <div class="bnrs3 hover:-translate-y-1 hover:scale-90 duration-500">
-    <h2 class="mt-3 ms-3 text-xl mt-1 font-bold  me-2">
-      Redeem points into cash and enjoy
-    </h2>
-  </div>
-</div>
+              <div class="bg-gray-800 w-full shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4">
+                <div class="mb-4">
+                  <label
+                    class="block text-blue-300 py-2 font-bold mb-2"
+                  >
+                    🪙 My Points -  {load === false && <>{point.point}</>}
+                  </label>
+                  <label
+                    class="block text-blue-300 py-2 font-bold mb-2"
+                  >
+                    🚚 Total Pickups -  {load === false && <>{pCount}</>}
+                  </label>
+                  
+                </div>
 
-<div className="h-auto w-full m-auto p-6 bg-yellow-400">
-  <h1 className="text-yellow-700 font-bold text-xl text-center">
-    Transforming waste into rewards, CleanHub not only cleans the
-    environment but also enriches lives. Join us in the journey of
-    sustainability, where every contribution makes a difference. Your
-    waste, our reward – building a cleaner, greener future together.
-  </h1>
-  <button className="border-2 border-slate-50 rounded-xl text-white p-3 m-auto mt-3 flex justify-center hover:bg-yellow-500"
-  onClick={()=>handleRequest()}
-  >
-    👨‍🌾 {butonValue}
-  </button>
-</div>
+                <div class="flex items-center justify-between pt-4">
+                  <button
+                    class="bg-gradient-to-r from-yellow-300 via-yellow-500 to-orange-500 text-white font-bold py-2 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
+                    type="button"
+                    onClick={() => handleRequest()}
+                  >
+                    👨‍🌾 {buttonValue}
+                  </button>
+                </div>
+              </div>
+            </div>
 
-<UserFooter />
-      </>
-        ):(
-        <>
-        <p><Spinner/></p>
-        </>
-        )}
-      
+            <div class="w-full xl:w-3/5 p-12 overflow-hidden">
+              <img
+                class="mx-auto w-1/2 md:w-1/ transform -rotate-6 transition hover:scale-110 duration-700 ease-in-out hover:rotate-6"
+                src="cleanerLady.png"
+              />
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+      ):(<Spinner/>)}
     </div>
   );
 };

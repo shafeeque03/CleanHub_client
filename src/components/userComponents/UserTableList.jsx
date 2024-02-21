@@ -24,7 +24,7 @@ const UserTableList = () => {
 
   return (
     <div className="p-6">
-      <div class="relative overflow-x-auto  sm:rounded-lg max-w-screen-2xl">
+      <div class="relative overflow-x-auto  sm:rounded-lg max-w-screen-2xl m-auto">
         <h1 className="flex justify-end me-10 mb-5 text-lg font-bold">Total Points : 🪙{load==false &&(<>{point.point}</>)}</h1>
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead class="text-xs text-gray-600 uppercase bg-gray-50 dark:bg-yellow-500 dark:text-gray-50">

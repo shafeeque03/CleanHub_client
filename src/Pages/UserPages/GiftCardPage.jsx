@@ -107,7 +107,7 @@ const GiftCardPage = () => {
         <div className="p-3 w-full bg-white flex-wrap justify-center gap-7 flex">
           {giftcards.length < 1 ? (
             <>
-              <p className="text-center text-slate-600 text-lg">No GiftCards</p>
+              <p className="text-center text-slate-600 text-lg">No GiftCards Available</p>
             </>
           ) : (
             giftcards.map((card) => (
